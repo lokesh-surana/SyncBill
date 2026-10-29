@@ -1,0 +1,78 @@
+# ── Sensitive Data & Exports (CRITICAL FOR PUBLIC REPO) ──
+backend/accurate_*.json
+accurate_*.json
+sync_changes.json
+uploaded_files_cache.json
+initial_export_completed.json
+synced_state.json
+SyncBill_Old_PC_Agent/synced_state.json
+SyncBill_Old_PC_Agent/uploaded_files_cache.json
+SyncBill_Old_PC_Agent/initial_export_completed.json
+SyncBill_Old_PC_Agent/credentials.json
+SyncBill_Old_PC_Agent/token.json
+credentials.json
+token.json
+*.log
+sync_activity.log
+
+# Scratch scripts with DB queries
+search_all_par.ps1
+search_by_pan.ps1
+get_firms.ps1
+inspect_*.ps1
+inspect_*.py
+export_*.ps1
+check_*.ps1
+list_sql_dbs.ps1
+export_accurate_payments.ps1
+check_collections.ps1
+
+# Generated PDFs and Output Folders
+*.pdf
+SyncBill_Cloud_PDFs/
+exports/
+SyncBill_Old_PC_Agent/exports/
+
+# Large archive files
+accurate.zip
+accurate_img.zip
+*.zip
+*.bak
+
+# Virtual environments
+venv/
+.venv/
+env/
+backend/venv/
+
+# Node dependencies & build artifacts
+node_modules/
+frontend/node_modules/
+whatsapp_bridge/node_modules/
+dist/
+frontend/dist/
+
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Local environment secrets & DB
+.env
+*.db
+*.db-shm
+*.db-wal
+backend/*.db
+backend/*.db-shm
+backend/*.db-wal
+
+# WhatsApp Bridge session & auth
+whatsapp_bridge/.wwebjs_auth/
+whatsapp_bridge/.wwebjs_cache/
+.wwebjs_auth/
+.wwebjs_cache/
+
+# Windows shortcuts & OS metadata
+*.lnk
+.DS_Store
+Thumbs.db
+agent_sync.txt

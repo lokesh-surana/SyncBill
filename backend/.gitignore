@@ -1,0 +1,16 @@
+# .gitignore — tells Git which files to NEVER track or upload to GitHub.
+
+# The .env file contains passwords. Never push it.
+.env
+
+# Python bytecode cache — auto-generated, not needed in version control.
+__pycache__/
+*.py[cod]
+
+# The SQLite development database file — it's local test data, not source code.
+*.db
+
+# Virtual environment folder — each developer creates their own.
+venv/
+.venv/
+env/

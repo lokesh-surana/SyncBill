@@ -1,0 +1,749 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Vibrant Modern SaaS & ERP Multi-Color Palette */
+  --bg-page: #f8fafc;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f1f5f9;
+  --bg-hover: #e2e8f0;
+
+  /* Borders & Dividers */
+  --border-color: #e2e8f0;
+  --border-focus: #6366f1;
+
+  /* Rich Color System */
+  --color-indigo: #6366f1;
+  --color-indigo-dark: #4f46e5;
+  --color-purple: #8b5cf6;
+  --color-violet: #7c3aed;
+  --color-emerald: #10b981;
+  --color-emerald-dark: #059669;
+  --color-amber: #f59e0b;
+  --color-orange: #f97316;
+  --color-rose: #f43f5e;
+  --color-cyan: #06b6d4;
+  --color-blue: #0284c7;
+
+  /* Sidebar Dark Theme */
+  --sidebar-bg: #0f172a;
+  --sidebar-border: #1e293b;
+  --sidebar-text: #94a3b8;
+  --sidebar-text-active: #ffffff;
+
+  /* Typography */
+  --text-main: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --text-white: #ffffff;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.08), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.04);
+  --shadow-glow: 0 0 20px -3px rgba(99, 102, 241, 0.25);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-page);
+  color: var(--text-main);
+  min-height: 100vh;
+  font-size: 15px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  color: var(--text-main);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Sleek Scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Modern Buttons with High Visibility Typography */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: var(--font-body);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: #2563eb;
+  color: #fff;
+  border: 1px solid #1d4ed8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+  background: #1d4ed8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-secondary {
+  background: #ffffff;
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+.btn-secondary:hover {
+  background: var(--bg-subtle);
+  color: var(--text-main);
+  border-color: #cbd5e1;
+}
+
+.btn-success {
+  background: #059669;
+  color: #fff;
+  border: 1px solid #047857;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-success:hover {
+  background: #047857;
+}
+
+.btn-danger {
+  background: #fee2e2;
+  color: #b91c1c;
+  border-color: #fca5a5;
+}
+.btn-danger:hover {
+  background: #fecaca;
+  color: #991b1b;
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 13px;
+}
+
+/* Modern Form Inputs with High Legibility */
+.input-field {
+  width: 100%;
+  padding: 9px 13px;
+  background: #ffffff;
+  border: 1.5px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-main);
+  font-size: 14.5px;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  font-family: var(--font-body);
+}
+.input-field:focus {
+  border-color: var(--border-focus);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* Accounting Table - Ultra-Compact High-Density Ledger Table */
+.accounting-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 11.5px;
+  line-height: 1.25;
+}
+.accounting-table th {
+  background: #f1f5f9;
+  color: #334155;
+  font-weight: 700;
+  text-align: left;
+  padding: 5px 8px;
+  border-bottom: 2px solid #cbd5e1;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.accounting-table td {
+  padding: 3.5px 7px;
+  border-bottom: 1px solid #f1f5f9;
+  color: var(--text-main);
+  vertical-align: middle;
+}
+.accounting-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.badge-paid {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid #bbf7d0;
+}
+.badge-unpaid {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+/* ═════════ VIBRATION & RED BOUNDARY ERROR ANIMATIONS ═════════ */
+@keyframes shakeVibrate {
+  0%, 100% { transform: translateX(0); }
+  15%, 45%, 75% { transform: translateX(-7px); }
+  30%, 60%, 90% { transform: translateX(7px); }
+}
+
+@keyframes redGlowPulse {
+  0% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.45), 0 0 16px rgba(239, 68, 68, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(239, 68, 68, 0.75), 0 0 24px rgba(239, 68, 68, 0.85);
+  }
+  100% {
+    box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.45), 0 0 16px rgba(239, 68, 68, 0.6);
+  }
+}
+
+/* Applied dynamically for 1-2 seconds on missing mandatory inputs */
+.box-vibrate-error {
+  border: 2.5px solid #dc2626 !important;
+  background-color: #fef2f2 !important;
+  color: #991b1b !important;
+  animation: shakeVibrate 0.6s cubic-bezier(0.36, 0.07, 0.19, 0.97) both, redGlowPulse 1.2s infinite ease-in-out !important;
+  outline: none !important;
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+/* ═════════ REAL-TIME CHANGE & TRANSITION ANIMATIONS ═════════ */
+
+/* 1. Value / Number Change Animation (Grand Total, Row Total, Taxable, Balance) */
+@keyframes valuePop {
+  0% {
+    transform: scale(1);
+    background-color: transparent;
+  }
+  35% {
+    transform: scale(1.1);
+    color: #2563eb;
+    background-color: #dbeafe;
+    border-radius: 4px;
+  }
+  100% {
+    transform: scale(1);
+    color: inherit;
+    background-color: transparent;
+  }
+}
+
+.anim-value-change {
+  animation: valuePop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+/* 2. New Table Row Slide-in Animation */
+@keyframes rowSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    background-color: #f0fdf4;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    background-color: transparent;
+  }
+}
+
+.anim-row-enter {
+  animation: rowSlideIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 3. Auto-fill Field Flash (when Item is selected and fills MRP/Rate) */
+@keyframes fieldAutofillPulse {
+  0% {
+    background-color: #eff6ff !important;
+    border-color: #3b82f6 !important;
+  }
+  100% {
+    background-color: #ffffff !important;
+    border-color: var(--border-color) !important;
+  }
+}
+
+.anim-autofill {
+  animation: fieldAutofillPulse 0.7s ease-out;
+}
+
+/* 4. Tab & View Fade-in */
+@keyframes viewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.anim-view-enter {
+  animation: viewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 5. Modal Dialog Pop-In */
+@keyframes modalPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.anim-modal-enter {
+  animation: modalPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* 6. Toast Notification Slide-In */
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.anim-toast-enter {
+  animation: toastSlideIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.1); }
+}
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Sidebar & Shell Layout */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-page);
+}
+
+.app-sidebar {
+  width: 250px;
+  background: #0f172a;
+  color: #94a3b8;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #1e293b;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  z-index: 90;
+  flex-shrink: 0;
+  transition: width 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+}
+
+.app-sidebar.collapsed {
+  width: 64px;
+}
+
+.app-sidebar.collapsed .sidebar-logo {
+  padding: 14px 14px;
+  justify-content: center;
+}
+
+.app-sidebar.collapsed .sidebar-logo-text {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-collapse-btn {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-group-title {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-item {
+  justify-content: center;
+  padding: 11px 0;
+  gap: 0;
+  border-left: none;
+}
+
+.app-sidebar.collapsed .sidebar-item.active {
+  border-left: 3px solid #38bdf8;
+  background: #1e293b;
+}
+
+.app-sidebar.collapsed .sidebar-item span {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-item .sidebar-badge {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-footer {
+  padding: 12px 6px;
+  text-align: center;
+}
+
+.app-sidebar.collapsed .sidebar-footer .footer-text {
+  display: none;
+}
+
+.app-sidebar.collapsed .sidebar-footer .footer-status-dot {
+  justify-content: center;
+}
+
+.sidebar-logo {
+  padding: 16px 18px;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sidebar-logo-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: #2563eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 12px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  position: relative;
+}
+
+.sidebar-traveling-pill {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  background: #1e293b;
+  border-radius: 6px;
+  border-left: 3px solid #38bdf8;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 0 0 1px rgba(56, 189, 248, 0.12);
+  pointer-events: none;
+  transition: top 0.26s cubic-bezier(0.25, 1, 0.5, 1), height 0.2s ease, opacity 0.2s ease, left 0.2s ease, right 0.2s ease;
+  z-index: 1;
+}
+
+.app-sidebar.collapsed .sidebar-traveling-pill {
+  left: 6px;
+  right: 6px;
+  border-left: none;
+}
+
+.sidebar-group-title {
+  font-size: 10.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #475569;
+  padding: 12px 10px 4px 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 12.5px;
+  font-weight: 500;
+  transition: color 0.18s ease;
+  width: 100%;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+.sidebar-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #f1f5f9;
+}
+
+.sidebar-item.active {
+  background: transparent;
+  color: #38bdf8;
+  font-weight: 600;
+  border-left: none;
+}
+
+.app-sidebar.collapsed .sidebar-item.active {
+  border-left: none;
+  background: transparent;
+}
+
+.sidebar-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.sidebar-footer {
+  padding: 12px 14px;
+  border-top: 1px solid #1e293b;
+  background: #090e1a;
+}
+
+.app-main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 100vh;
+}
+
+.app-topbar {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+.app-content {
+  flex: 1;
+  padding: 18px 24px;
+  max-width: 1560px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Desk Card Styles */
+.desk-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s ease;
+}
+
+.desk-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.desk-card-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Multi-colored Accent Badges */
+.badge-indigo {
+  background: #e0e7ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+.badge-rose {
+  background: #ffe4e6;
+  color: #e11d48;
+  border: 1px solid #fecdd3;
+}
+.badge-emerald {
+  background: #d1fae5;
+  color: #047857;
+  border: 1px solid #a7f3d0;
+}
+.badge-amber {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+.badge-cyan {
+  background: #cffafe;
+  color: #0e7490;
+  border: 1px solid #a5f3fc;
+}
+
+/* 🔄 Phase 2 Goods Return Vouchers (Credit & Debit Notes) */
+.badge-return-credit {
+  background: #ffe4e6;
+  color: #be123c;
+  border: 1px solid #fda4af;
+  font-weight: 600;
+}
+
+.badge-return-debit {
+  background: #ffedd5;
+  color: #c2410c;
+  border: 1px solid #fdba74;
+  font-weight: 600;
+}
+
+.return-hero-card {
+  background: linear-gradient(135deg, #ffffff 0%, #fff1f2 100%);
+  border: 1px solid #fecdd3;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  box-shadow: 0 4px 12px -2px rgba(225, 29, 72, 0.08);
+}
+
+.return-hero-card.debit-mode {
+  background: linear-gradient(135deg, #ffffff 0%, #fff7ed 100%);
+  border: 1px solid #fed7aa;
+  box-shadow: 0 4px 12px -2px rgba(234, 88, 12, 0.08);
+}
+
+.returnable-item-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 14px;
+  background: #ffffff;
+}
+
+.returnable-item-card:hover {
+  border-color: #cbd5e1;
+  box-shadow: var(--shadow-sm);
+}
+
+.returnable-item-card.selected-for-return {
+  border-color: #f43f5e;
+  background: #fff5f6;
+}
+
+.returnable-item-card.selected-for-debit {
+  border-color: #f97316;
+  background: #fffaf0;
+}
+
+.qty-stepper-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 15px;
+  transition: all 0.15s ease;
+}
+
+.qty-stepper-btn:hover:not(:disabled) {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.qty-stepper-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* Print Layout */
+@media print {
+  header, nav, aside, .app-sidebar, .app-topbar, .no-print, button {
+    display: none !important;
+  }
+  body {
+    background: #ffffff !important;
+    font-size: 11pt;
+  }
+  .app-main-area, .app-content {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .printable-ledger {
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+
+

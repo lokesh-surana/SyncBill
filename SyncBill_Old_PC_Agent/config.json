@@ -1,0 +1,15 @@
+{
+  "syncbill_url": "http://192.168.1.5:8000",
+  "secret_token": "syncbill_secret_2026",
+  "machine_name": "Accurate-Old-PC",
+  "check_interval_seconds": 30,
+  "accurate_backup_folder": "C:\\Accurate\\backup",
+  "sql_server": {
+    "enabled": false,
+    "server_instance": "localhost\\SQLEXPRESS",
+    "database_name": "AtechDB",
+    "use_windows_auth": true,
+    "username": "sa",
+    "password": ""
+  }
+}

@@ -1,0 +1,13 @@
+# requirements.txt - Python dependencies for SyncBill backend
+# Install: pip install -r requirements.txt
+
+fastapi==0.149.0
+uvicorn[standard]==0.54.0
+sqlalchemy==2.1.5
+alembic==1.20.0
+pydantic==2.14.1
+python-dotenv==1.0.1
+httpx==0.28.1
+
+# Uncomment when connecting to PostgreSQL (requires PostgreSQL installed):
+# psycopg2-binary==2.9.9
