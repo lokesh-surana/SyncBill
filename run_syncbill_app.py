@@ -1,7 +1,7 @@
 """
 SyncBill ERP — Standalone Native Desktop App Runner
-Launches the consolidated single-port server silently in the background
-and opens a native dedicated application window without browser bars.
+Launches the consolidated single-port server and WhatsApp Web Bridge
+silently in the background (zero black windows) and opens a dedicated app window.
 """
 
 import sys
@@ -9,7 +9,7 @@ import os
 import time
 import subprocess
 import urllib.request
-import signal
+import shutil
 
 _ROOT = os.path.dirname(os.path.abspath(__file__))
 _BACKEND_DIR = os.path.join(_ROOT, "backend")
@@ -36,20 +36,25 @@ def is_server_ready():
     except Exception:
         return False
 
+def is_whatsapp_ready():
+    try:
+        with urllib.request.urlopen("http://127.0.0.1:3001/status", timeout=1) as res:
+            return res.status == 200
+    except Exception:
+        return False
+
 def main():
     os.chdir(_ROOT)
 
-    # 1. Start backend server if not already running
+    # 1. Start backend server silently if not running
     server_proc = None
     if not is_server_ready():
-        # Start uvicorn silently using pythonw
         cmd = [
             PY_EXEC, "-m", "uvicorn", "app.main:app",
             "--host", "0.0.0.0",
             "--port", "8000",
             "--app-dir", _BACKEND_DIR
         ]
-        # CREATE_NO_WINDOW = 0x08000000 ensures zero console window popup
         server_proc = subprocess.Popen(
             cmd,
             creationflags=0x08000000 if sys.platform == "win32" else 0,
@@ -57,26 +62,38 @@ def main():
             stderr=subprocess.DEVNULL
         )
 
-        # Wait up to 6 seconds for server to be ready
         for _ in range(30):
             if is_server_ready():
                 break
             time.sleep(0.2)
 
-    # 2. Launch Dedicated App Window
+    # 2. Start WhatsApp Bridge silently if not running
+    whatsapp_proc = None
+    if not is_whatsapp_ready():
+        node_exe = shutil.which("node") or r"C:\Program Files\nodejs\node.exe"
+        bridge_script = os.path.join(_ROOT, "whatsapp_bridge", "server.js")
+        if os.path.exists(node_exe) and os.path.exists(bridge_script):
+            whatsapp_proc = subprocess.Popen(
+                [node_exe, bridge_script],
+                cwd=os.path.join(_ROOT, "whatsapp_bridge"),
+                creationflags=0x08000000 if sys.platform == "win32" else 0,
+                stdout=subprocess.DEVNULL,
+                stderr=subprocess.DEVNULL
+            )
+
+    # 3. Launch Dedicated App Window
     browser = find_browser()
     target_url = "http://127.0.0.1:8000"
 
     if browser:
         app_cmd = [browser, f"--app={target_url}", "--window-size=1366,850"]
-        # Run browser and wait until user closes the window
         browser_proc = subprocess.Popen(app_cmd)
         browser_proc.wait()
     else:
         import webbrowser
         webbrowser.open(target_url)
 
-    # 3. Clean up server if we spawned it
+    # 4. Clean up background processes when the window closes
     if server_proc:
         try:
             server_proc.terminate()
@@ -87,6 +104,15 @@ def main():
             except Exception:
                 pass
 
+    if whatsapp_proc:
+        try:
+            whatsapp_proc.terminate()
+            whatsapp_proc.wait(timeout=2)
+        except Exception:
+            try:
+                whatsapp_proc.kill()
+            except Exception:
+                pass
+
 if __name__ == "__main__":
     main()
-
