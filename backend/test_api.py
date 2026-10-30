@@ -24,7 +24,7 @@ def run_tests():
     # 2. Firm CRUD
     firm_payload = {
         "name": "Demo Enterprise Pvt Ltd",
-        "gstin": "27AABCS1429B1Z1",
+        "gstin": "27TESTF1234F1Z1",
         "address": "101 Tech Hub, Pune, Maharashtra",
         "fy_start": "2024-04-01",
         "fy_end": "2025-03-31",
@@ -33,7 +33,7 @@ def run_tests():
     r = client.post("/api/v1/firms/", json=firm_payload)
     if r.status_code == 400 and "already exists" in r.text:
         # If already created in a previous test run
-        r = client.get("/api/v1/firms/?search=Demo")
+        r = client.get("/api/v1/firms/")
         firm_id = r.json()[0]["id"]
         print(f"[PASS] Firm already existed, reused ID={firm_id}")
     else:

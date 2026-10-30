@@ -80,6 +80,10 @@ def main():
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL
             )
+            for _ in range(25):
+                if is_whatsapp_ready():
+                    break
+                time.sleep(0.2)
 
     # 3. Launch Dedicated App Window
     browser = find_browser()
