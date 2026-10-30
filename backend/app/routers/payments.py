@@ -70,6 +70,10 @@ def record_payment(payment_in: PaymentCreate, db: Session = Depends(get_db)):
         count = db.query(Payment).filter(Payment.firm_id == firm.id).count() + 1
         prefix = "RCP" if payment_in.payment_type == PaymentType.RECEIPT else "PAY"
         payment_number = f"{prefix}-{date.today().year}-{count:04d}"
+        # Ensure payment number collision prevention
+        while db.query(Payment).filter(Payment.firm_id == firm.id, Payment.payment_number == payment_number).first():
+            count += 1
+            payment_number = f"{prefix}-{date.today().year}-{count:04d}"
 
     pay_amount = Decimal(str(payment_in.amount))
 

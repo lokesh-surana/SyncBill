@@ -69,9 +69,14 @@ def main():
     existing_invoices = db.query(Invoice).all()
     inv_cache = set()
     for inv in existing_invoices:
-        inv_cache.add((inv.firm_id, inv.invoice_type.value if hasattr(inv.invoice_type, 'value') else str(inv.invoice_type), str(inv.invoice_number).strip().upper()))
+        t_str = (inv.invoice_type.value if hasattr(inv.invoice_type, 'value') else str(inv.invoice_type)).upper()
+        inv_no_str = str(inv.invoice_number).strip().upper()
+        inv_cache.add((inv.firm_id, t_str, inv_no_str))
+        inv_cache.add((inv.customer_id, t_str, inv_no_str))
         if inv.vendor_bill_number:
-            inv_cache.add((inv.customer_id, 'PURCHASE', str(inv.vendor_bill_number).strip().upper()))
+            v_no_str = str(inv.vendor_bill_number).strip().upper()
+            inv_cache.add((inv.customer_id, 'PURCHASE', v_no_str))
+            inv_cache.add((inv.firm_id, 'PURCHASE', v_no_str))
 
     print(f"  [OK] Loaded {len(cust_map)} existing parties and {len(existing_invoices)} invoices from SyncBill.")
 

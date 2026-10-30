@@ -87,6 +87,10 @@ def create_invoice(invoice_in: InvoiceCreate, db: Session = Depends(get_db)):
         else:
             prefix = "DOC"
         invoice_number = f"{prefix}-{date.today().year}-{count:04d}"
+        # Ensure document number collision prevention
+        while db.query(Invoice).filter(Invoice.firm_id == firm.id, Invoice.invoice_number == invoice_number).first():
+            count += 1
+            invoice_number = f"{prefix}-{date.today().year}-{count:04d}"
 
     # 3. Process line items and compute taxes
     subtotal = Decimal("0.00")
