@@ -18,8 +18,24 @@ from sqlalchemy.orm import sessionmaker, DeclarativeBase  # Session = a single D
 load_dotenv()  # After this line, os.environ["DATABASE_URL"] exists.
 
 # ── Step 2: Read the database URL from the environment ──────────────────────
-_BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-_DEFAULT_DB_PATH = os.path.join(_BACKEND_DIR, "syncbill_dev.db")
+import sys
+if getattr(sys, 'frozen', False):
+    app_data = os.environ.get("APPDATA") or os.path.dirname(sys.executable)
+    data_dir = os.path.join(app_data, "SyncBill")
+    os.makedirs(data_dir, exist_ok=True)
+    _DEFAULT_DB_PATH = os.path.join(data_dir, "syncbill.db")
+    # If initial syncbill_dev.db exists in bundle and destination doesn't exist, copy it!
+    bundle_db = os.path.join(getattr(sys, '_MEIPASS', ''), "syncbill_dev.db")
+    if not os.path.exists(_DEFAULT_DB_PATH) and os.path.exists(bundle_db):
+        import shutil
+        try:
+            shutil.copyfile(bundle_db, _DEFAULT_DB_PATH)
+        except Exception:
+            pass
+else:
+    _BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    _DEFAULT_DB_PATH = os.path.join(_BACKEND_DIR, "syncbill_dev.db")
+
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if not DATABASE_URL or DATABASE_URL == "sqlite:///./syncbill_dev.db":
     DATABASE_URL = f"sqlite:///{_DEFAULT_DB_PATH.replace(os.sep, '/')}"

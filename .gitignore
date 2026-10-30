@@ -50,6 +50,8 @@ node_modules/
 frontend/node_modules/
 whatsapp_bridge/node_modules/
 dist/
+build/
+*.spec
 frontend/dist/
 
 # Python cache

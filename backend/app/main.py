@@ -106,8 +106,13 @@ def health_check():
 
 # Mount built React frontend for production single-process desktop app
 import os
+import sys
 from fastapi.staticfiles import StaticFiles
 
-_FRONTEND_DIST = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+if getattr(sys, 'frozen', False):
+    _FRONTEND_DIST = os.path.join(getattr(sys, '_MEIPASS', ''), "frontend_dist")
+else:
+    _FRONTEND_DIST = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
+
 if os.path.exists(_FRONTEND_DIST):
     app.mount("/", StaticFiles(directory=_FRONTEND_DIST, html=True), name="frontend")
