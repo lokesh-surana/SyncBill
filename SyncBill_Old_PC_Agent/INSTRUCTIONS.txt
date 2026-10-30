@@ -1,0 +1,41 @@
+======================================================================
+     SyncBill ERP — Old PC Silent Sync Setup Quick Guide
+======================================================================
+
+Welcome! This package connects your Old Shop PC (running Accurate ERP)
+silently and securely to SyncBill ERP.
+
+----------------------------------------------------------------------
+HOW TO SET UP (3 SIMPLE STEPS):
+----------------------------------------------------------------------
+
+STEP 1: COPY TO OLD PC
+- Copy this entire folder to your Old PC (e.g. C:\SyncBill_Old_PC_Agent).
+- Ensure Python (3.8 or higher) is installed on the PC.
+  (If not installed, download the installer from python.org and make 
+   sure to check "Add Python to PATH" during installation).
+
+STEP 2: RUN INITIAL SETUP
+- Double-click: 1_INITIAL_SETUP_AND_GOOGLE_LOGIN.bat
+- This will automatically install dependencies (pyodbc, requests, etc.)
+  and authenticate Google Drive (if credentials.json is provided).
+
+STEP 3: INSTALL THE 24/7 SILENT BACKGROUND SERVICE
+- Right-click: INSTALL_SILENT_SERVICE.bat
+- Select "Run as administrator".
+- That is all! Windows will now automatically run the agent in the 
+  background via pythonw.exe without any black terminal windows.
+- It will start automatically every time the PC turns on.
+
+----------------------------------------------------------------------
+SAFETY & RELIABILITY GUARANTEES:
+----------------------------------------------------------------------
+1. ZERO POPUPS: Runs silently in the background (zero black windows).
+2. 100% NON-BLOCKING: Uses WITH (NOLOCK) and READ UNCOMMITTED.
+   It will NEVER freeze, lock, or slow down your Accurate billing.
+3. WI-FI RESILIENT: If the internet or shop router drops, it sleeps 
+   and quietly reconnects when network returns.
+4. ACTIVITY LOG: Check "sync_activity.log" anytime to see status.
+5. UNINSTALL: Run "UNINSTALL_SERVICE.bat" as administrator to remove.
+
+======================================================================
